@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cynthia Kiprop - Portfolio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Header with Navbar -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <span class="logo-text">Cynthia Kiprop</span>
+          <div class="logo-accent"></div>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="theme-toggle">
+          <i class="fas fa-moon"></i>
+        </div>
+        <div class="hamburger">☰</div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Hero Section -->
+      <section id="home" class="hero">
+        <div class="hero-bg">
+          <canvas id="poly-canvas" aria-hidden="true"></canvas>
+          <div class="bg-overlay"></div>
+        </div>
+        <div class="hero-content">
+          <figure class="profile-picture">
+            <img
+              src="./me.jpg"
+              alt="Cynthia Kiprop, Web Developer and Graphic Designer"
+              class="profile-img"
+            />
+            <div class="profile-frame"></div>
+          </figure>
+          <h1>
+            Hello, I’m
+            <span class="highlight" id="name-reveal">
+              <span class="letter">C</span><span class="letter">y</span
+              ><span class="letter">n</span><span class="letter">t</span
+              ><span class="letter">h</span><span class="letter">i</span
+              ><span class="letter">a</span>
+              <span class="letter"> </span>
+              <span class="letter">K</span><span class="letter">i</span
+              ><span class="letter">p</span><span class="letter">r</span
+              ><span class="letter">o</span><span class="letter">p</span>
+            </span>
+          </h1>
+          <span id="typewriter" aria-live="polite"></span>
+          <p class="subtitle">
+            Crafting Digital Dreams as a Web Developer & Graphic Designer
+          </p>
+          <a href="#portfolio" class="btn explore-btn">Explore My Creations</a>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+          <article class="about-card">
+            <p>
+              I’m a Kenyan-based web developer and graphic designer with a
+              passion for creating user-friendly websites and stunning visuals.
+              I specialize in blending clean code with bold aesthetics to bring
+              ideas to life.
+            </p>
+          </article>
+          <aside class="skills-card">
+            <h3>Skills</h3>
+            <ul>
+              <li><i class="fas fa-code"></i> HTML, CSS, JavaScript</li>
+              <li><i class="fab fa-react"></i> React, WordPress</li>
+              <li>
+                <i class="fas fa-paint-brush"></i> Adobe Photoshop, Illustrator
+              </li>
+              <li><i class="fas fa-pencil-ruler"></i> UI/UX Design</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Portfolio Section -->
+      <section id="portfolio" class="portfolio">
+        <h2>My Work</h2>
+        <nav class="portfolio-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="web">Web Dev</button>
+          <button class="filter-btn" data-filter="design">
+            Graphic Design
+          </button>
+        </nav>
+        <div class="portfolio-grid">
+          <article
+            class="portfolio-item"
+            data-category="web"
+            onclick="openLightbox('https://via.placeholder.com/600', 'E-Commerce Site')"
+          >
+            <div class="item-overlay">
+              <h3>E-Commerce Site</h3>
+              <p>
+                A responsive online store built with HTML, CSS, and JavaScript.
+              </p>
+            </div>
+            <img src="./Screenshot.png" alt="E-Commerce Site Project" />
+          </article>
+          <article
+            class="portfolio-item"
+            data-category="design"
+            onclick="openLightbox('https://via.placeholder.com/600', 'Branding Design')"
+          >
+            <div class="item-overlay">
+              <h3>Branding Design</h3>
+              <p>
+                Logo and graphics for a coffee shop startup using Illustrator.
+              </p>
+            </div>
+            <img
+              src="https://via.placeholder.com/300"
+              alt="Branding Design Project"
+            />
+          </article>
+          <article
+            class="portfolio-item"
+            data-category="web"
+            onclick="openLightbox('https://via.placeholder.com/600', 'Blog Redesign')"
+          >
+            <div class="item-overlay">
+              <h3>Blog Redesign</h3>
+              <p>A modern blog site optimized for mobile with WordPress.</p>
+            </div>
+            <img
+              src="https://via.placeholder.com/300"
+              alt="Blog Redesign Project"
+            />
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="contact">
+        <div class="contact-overlay"></div>
+        <div class="contact-content">
+          <h2>Let's Create Something Extraordinary</h2>
+          <p>Reach out and let’s weave your ideas into reality!</p>
+          <form
+            id="contact-form"
+            class="contact-form"
+            aria-label="Contact Form"
+          >
+            <input
+              type="text"
+              placeholder="Your Name"
+              required
+              class="input-field"
+              aria-label="Your Name"
+            />
+            <input
+              type="email"
+              placeholder="Your Email"
+              required
+              class="input-field"
+              aria-label="Your Email"
+            />
+            <textarea
+              placeholder="Your Vision"
+              required
+              class="textarea-field"
+              aria-label="Your Message"
+            ></textarea>
+            <button type="submit" class="btn send-btn">Launch Message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+      <span class="close" onclick="closeLightbox()" aria-label="Close">×</span>
+      <img id="lightbox-img" src="" alt="Portfolio Item" />
+      <div id="lightbox-caption"></div>
+    </div>
+
+    <footer>
+      <!-- Wave Shape -->
+      <div class="wave-shape"></div>
+
+      <!-- Floating Circles -->
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+      <div class="circle circle-3"></div>
+
+      <!-- Triangles -->
+      <div class="triangle triangle-1"></div>
+      <div class="triangle triangle-2"></div>
+
+      <!-- Footer Content -->
+      <div class="footer-container">
+        <!-- Left Column: Quick Links -->
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Middle Column: Social Media -->
+        <div class="footer-column">
+          <h4>Let's Connect</h4>
+          <div class="social-icons">
+            <a href="https://github.com/Cynthia-0034" aria-label="GitHub"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/cynthia-kiprop-346116182/"
+              aria-label="LinkedIn"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/cynthiakiprop229/"
+              aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          </div>
+          <p class="cta">Let's create something extraordinary!</p>
+        </div>
+
+        <!-- Right Column: Quote -->
+        <div class="footer-column">
+          <h4>Inspiration</h4>
+          <p class="quote">"Design is intelligence made visible."</p>
+          <p class="author">– Alina Wheeler</p>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>
+          Designed & Developed by
+          <span class="highlight">Cynthia Kiprop</span> © 2025
+        </p>
+        <a href="#top" class="back-to-top" aria-label="Back to Top">↑</a>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+  </body>
+</html>
