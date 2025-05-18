@@ -1,0 +1,28 @@
+{
+  "name": "cynthia-s-portfolio-main",
+  "version": "1.0.0",
+  "description": "Cynthia's personal portfolio with dynamic features",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cynthia-0034/Cynthia-s-Portfolio-main.git"
+  },
+  "keywords": [],
+  "author": "Cynthia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cynthia-0034/Cynthia-s-Portfolio-main/issues"
+  },
+  "homepage": "https://github.com/Cynthia-0034/Cynthia-s-Portfolio-main#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0",
+    "nodemailer": "^6.9.15"
+  }
+}
