@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -14,12 +14,13 @@ body {
   overflow-x: hidden;
 }
 
-/* Smooth Transitions for All Elements */
+/* Smooth Transitions */
 body,
 .navbar,
 .hero,
 .about,
 .portfolio,
+.blog,
 .testimonials,
 .contact,
 footer,
@@ -38,6 +39,8 @@ footer,
 .skills-card li,
 .portfolio-item .item-overlay h3,
 .portfolio-item .item-overlay p,
+.blog-card h3,
+.blog-card p,
 .testimonial-item p,
 .testimonial-item h4,
 .testimonial-item span,
@@ -57,7 +60,9 @@ footer,
 .profile-frame,
 .close,
 .nav-arrow,
-.testimonial-form h3 {
+.testimonial-form h3,
+.blog-content h1,
+.blog-content p {
   transition: background 0.5s ease, color 0.5s ease, background-color 0.5s ease,
     border-color 0.5s ease, fill 0.5s ease, opacity 0.5s ease;
 }
@@ -166,6 +171,7 @@ body.light-mode .hero {
 
 body.light-mode .about,
 body.light-mode .portfolio,
+body.light-mode .blog,
 body.light-mode .testimonials {
   background: linear-gradient(135deg, #fafafa, #f0f0f0);
 }
@@ -200,6 +206,7 @@ body.light-mode footer {
 }
 
 .logo-text {
+  font-family: "Playfair Display", serif;
   font-size: 1.8rem;
   font-weight: 700;
   background: linear-gradient(45deg, #ff6f61, #d4a5ff);
@@ -363,6 +370,7 @@ body.light-mode .profile-frame {
 }
 
 .hero h1 {
+  font-family: "Playfair Display", serif;
   font-size: clamp(2.2rem, 4.5vw, 4rem);
   background: linear-gradient(45deg, #d4a5ff, #fff);
   -webkit-background-clip: text;
@@ -483,20 +491,24 @@ body.light-mode .subtitle {
   box-shadow: 0 6px 15px rgba(255, 111, 97, 0.5);
 }
 
-.contact-btn {
+.contact-btn,
+.blog-cta {
   background: transparent;
   border: 2px solid #ff6f61;
 }
 
-body.light-mode .contact-btn {
+body.light-mode .contact-btn,
+body.light-mode .blog-cta {
   border-color: #d81b60;
 }
 
-.contact-btn:hover {
+.contact-btn:hover,
+.blog-cta:hover {
   background: #ff6f61;
 }
 
-body.light-mode .contact-btn:hover {
+body.light-mode .contact-btn:hover,
+body.light-mode .blog-cta:hover {
   background: #d81b60;
 }
 
@@ -507,6 +519,7 @@ body.light-mode .contact-btn:hover {
 }
 
 .about h2 {
+  font-family: "Playfair Display", serif;
   font-size: 2.5rem;
   color: #ff6f61;
   text-align: center;
@@ -562,6 +575,7 @@ body.light-mode .about-card p {
 }
 
 .skills-card h3 {
+  font-family: "Playfair Display", serif;
   font-size: 1.4rem;
   color: #ff6f61;
   margin-bottom: 1rem;
@@ -603,6 +617,7 @@ body.light-mode .skills-card i {
 }
 
 .portfolio h2 {
+  font-family: "Playfair Display", serif;
   font-size: 2.5rem;
   color: #ff6f61;
   text-align: center;
@@ -690,6 +705,7 @@ body.light-mode .filter-btn.active {
 }
 
 .item-overlay h3 {
+  font-family: "Playfair Display", serif;
   font-size: 1.4rem;
   color: #ff6f61;
 }
@@ -706,7 +722,129 @@ body.light-mode .item-overlay h3 {
 }
 
 body.light-mode .item-overlay p {
-  color: #e0e0e0;
+  color: #333;
+}
+
+/* Blog Section */
+.blog {
+  padding: 4rem 5%;
+  background: linear-gradient(135deg, #1a1a1a, #2e0175);
+}
+
+.blog h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  color: #ff6f61;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+body.light-mode .blog h2 {
+  color: #ff6f61;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+}
+
+.blog-card {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2rem;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+body.light-mode .blog-card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.blog-card:hover {
+  transform: translateY(-10px);
+}
+
+.blog-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  color: #ff6f61;
+  margin-bottom: 1rem;
+}
+
+body.light-mode .blog-card h3 {
+  color: #ff6f61;
+}
+
+.blog-card p {
+  font-size: 1rem;
+  color: #e6d5ff;
+  margin-bottom: 1rem;
+}
+
+body.light-mode .blog-card p {
+  color: #333;
+}
+
+.blog-card a {
+  color: #ff6f61;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+body.light-mode .blog-card a {
+  color: #d81b60;
+}
+
+.blog-card a:hover {
+  color: #d4a5ff;
+}
+
+body.light-mode .blog-card a:hover {
+  color: #ff6f61;
+}
+
+.blog-cta {
+  display: block;
+  width: fit-content;
+  margin: 2rem auto;
+}
+
+/* Blog Post Page */
+.blog-content {
+  max-width: 800px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+body.light-mode .blog-content {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.blog-content h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.5rem;
+  color: #ff6f61;
+  margin-bottom: 1.5rem;
+}
+
+body.light-mode .blog-content h1 {
+  color: #ff6f61;
+}
+
+.blog-content p {
+  font-size: 1.1rem;
+  color: #f5f5f5;
+  margin-bottom: 1.5rem;
+}
+
+body.light-mode .blog-content p {
+  color: #333;
 }
 
 /* Testimonials Section */
@@ -716,6 +854,7 @@ body.light-mode .item-overlay p {
 }
 
 .testimonials h2 {
+  font-family: "Playfair Display", serif;
   font-size: 2.5rem;
   color: #ff6f61;
   text-align: center;
@@ -763,6 +902,7 @@ body.light-mode .testimonial-item p {
 }
 
 .testimonial-item h4 {
+  font-family: "Playfair Display", serif;
   font-size: 1.2rem;
   color: #ff6f61;
 }
@@ -787,6 +927,7 @@ body.light-mode .testimonial-item span {
 }
 
 .testimonial-form h3 {
+  font-family: "Playfair Display", serif;
   font-size: 1.8rem;
   color: #ff6f61;
   margin-bottom: 1.5rem;
@@ -907,6 +1048,7 @@ body.light-mode .nav-arrow:hover {
 }
 
 .contact h2 {
+  font-family: "Playfair Display", serif;
   font-size: 2.5rem;
   background: linear-gradient(45deg, #fff, #d4a5ff);
   -webkit-background-clip: text;
@@ -1003,7 +1145,7 @@ footer {
 .footer-container {
   display: flex;
   justify-content: space-between;
-  max-width: 1200px;
+  max-width: Writ1200px;
   margin: 0 auto;
   padding: 1.5rem 0;
   position: relative;
@@ -1016,6 +1158,7 @@ footer {
 }
 
 .footer-column h4 {
+  font-family: "Playfair Display", serif;
   font-size: 1.3rem;
   color: #ff6f61;
   margin-bottom: 1rem;
@@ -1332,13 +1475,18 @@ body.light-mode .triangle-2 {
   }
 
   .about-content,
-  .portfolio-grid {
+  .portfolio-grid,
+  .blog-grid {
     grid-template-columns: 1fr;
   }
 
   .hero-buttons {
     flex-direction: column;
     gap: 0.8rem;
+  }
+
+  .blog-content {
+    padding: 1.5rem;
   }
 }
 
@@ -1364,5 +1512,9 @@ body.light-mode .triangle-2 {
 
   .theme-toggle[aria-checked="true"] .toggle-icon {
     transform: translateX(20px);
+  }
+
+  .blog-content h1 {
+    font-size: 2rem;
   }
 }

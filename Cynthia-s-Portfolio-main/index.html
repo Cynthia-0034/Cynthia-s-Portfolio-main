@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Portfolio of a passionate web developer"
+      content="Portfolio of Cynthia Kiprop, Web Developer & Graphic Designer"
     />
-    <title>Your Name - Portfolio</title>
+    <title>Cynthia Kiprop - Portfolio</title>
     <link rel="stylesheet" href="styles.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
     />
   </head>
   <body>
@@ -21,13 +25,14 @@
     <!-- Navbar -->
     <nav class="navbar">
       <div class="logo">
-        <span class="logo-text">YourName</span>
+        <span class="logo-text">CynthiaKiprop</span>
         <span class="logo-accent"></span>
       </div>
       <ul class="nav-links">
         <li><a href="#home" class="nav-link active">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="#blog" class="nav-link">Blog</a></li>
         <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
@@ -48,19 +53,15 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
       <div class="hero-bg">
-        <canvas id="poly-canvas"></canvas>
+        <canvas id="poly-canvas" aria-hidden="true"></canvas>
         <div class="bg-overlay"></div>
       </div>
       <div class="hero-content">
         <div class="profile-picture">
-          <img
-            src="./images/me.jpg"
-            alt="Profile Picture"
-            class="profile-img"
-          />
+          <img src="./me.jpg" alt="Cynthia Kiprop" class="profile-img" />
           <div class="profile-frame"></div>
         </div>
-        <h1 id="name-reveal">Hi, I'm <span>Your Name</span></h1>
+        <h1>Hi, I'm Cynthia Kiprop</h1>
         <div id="typewriter"></div>
         <p class="subtitle">
           Crafting stellar web experiences with passion and precision
@@ -78,11 +79,12 @@
       <div class="about-content">
         <div class="about-card">
           <p>
-            I'm a passionate web developer with a knack for creating seamless,
-            user-friendly experiences. Skilled in HTML, CSS, JavaScript,
-            Node.js, and MongoDB, I love turning ideas into reality. When I'm
-            not coding, you'll find me exploring new tech or sipping coffee
-            while brainstorming my next project.
+            I'm Cynthia Kiprop, a passionate web developer and graphic designer
+            skilled in HTML, CSS, JavaScript, Node.js, MongoDB, and design tools
+            like Photoshop and Illustrator. I love creating seamless,
+            user-friendly experiences and bold brand identities. When not coding
+            or designing, I share insights on my blog or explore new tech over
+            coffee.
           </p>
           <a href="./resume.pdf" class="btn resume-btn">Download Resume</a>
         </div>
@@ -95,6 +97,9 @@
             <li><i class="fab fa-node-js"></i> Node.js</li>
             <li><i class="fas fa-database"></i> MongoDB</li>
             <li><i class="fab fa-react"></i> React</li>
+            <li><i class="fab fa-corelDraw"></i> corelDraw</li>
+            <li><i class="fab fa-adobe"></i> Photoshop</li>
+            <li><i class="fab fa-adobe"></i> Illustrator</li>
           </ul>
         </div>
       </div>
@@ -110,6 +115,13 @@
         <button class="filter-btn" data-filter="design">Design</button>
       </div>
       <div class="portfolio-grid"></div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+      <h2>My Blog</h2>
+      <div class="blog-grid"></div>
+      <a href="#contact" class="btn blog-cta">Share Your Thoughts</a>
     </section>
 
     <!-- Testimonials Section -->
@@ -199,20 +211,27 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#blog">Blog</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-column">
           <h4>Connect</h4>
           <div class="social-icons">
-            <a href="https://github.com" target="_blank" aria-label="GitHub"
+            <a
+              href="https://github.com/Cynthia-0034"
+              target="_blank"
+              aria-label="GitHub"
               ><i class="fab fa-github"></i
             ></a>
             <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"
               ><i class="fab fa-linkedin"></i
             ></a>
-            <a href="https://twitter.com" target="_blank" aria-label="Twitter"
-              ><i class="fab fa-twitter"></i
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
             ></a>
           </div>
           <p class="cta">Let's collaborate on your next project!</p>
@@ -227,7 +246,7 @@
       </div>
       <div class="footer-bottom">
         <p>
-          &copy; 2025 <span class="highlight">Your Name</span>. All rights
+          © 2025 <span class="highlight">Cynthia Kiprop</span>. All rights
           reserved.
         </p>
       </div>
@@ -239,7 +258,7 @@
 
     <!-- Lightbox -->
     <div class="lightbox">
-      <span class="close" aria-label="Close lightbox">&times;</span>
+      <span class="close" aria-label="Close lightbox">×</span>
       <img src="" alt="Portfolio Item" />
       <p class="lightbox-caption"></p>
       <button class="nav-arrow prev" aria-label="Previous image">

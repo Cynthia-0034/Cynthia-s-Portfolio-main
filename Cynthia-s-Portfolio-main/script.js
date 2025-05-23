@@ -62,15 +62,17 @@ document.addEventListener("mousemove", (e) => {
   cursor.style.top = `${e.clientY}px`;
 });
 
-document.querySelectorAll("a, button, .portfolio-item").forEach((el) => {
-  el.addEventListener("mouseenter", () => cursor.classList.add("hover"));
-  el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
-});
+document
+  .querySelectorAll("a, button, .portfolio-item, .blog-card")
+  .forEach((el) => {
+    el.addEventListener("mouseenter", () => cursor.classList.add("hover"));
+    el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
+  });
 
 // Typewriter Effect
 if (document.getElementById("typewriter")) {
   const typed = new Typed("#typewriter", {
-    strings: ["Web Developer", "UI/UX Enthusiast", "Creative Coder"],
+    strings: ["Web Developer", "Graphic Designer", "Creative Coder"],
     typeSpeed: 50,
     backSpeed: 30,
     loop: true,
@@ -204,6 +206,36 @@ filterButtons.forEach((btn) => {
     loadProjects(filter);
   });
 });
+
+// Blog Dynamic Loading
+const blogGrid = document.querySelector(".blog-grid");
+async function loadBlogs() {
+  try {
+    const response = await fetch("/api/blogs");
+    if (!response.ok) throw new Error("Failed to fetch blogs");
+    const blogs = await response.json();
+
+    blogGrid.innerHTML = "";
+    blogs.forEach((blog) => {
+      const card = document.createElement("article");
+      card.classList.add("blog-card");
+      card.innerHTML = `
+        <h3>${blog.title}</h3>
+        <p>${blog.excerpt}</p>
+        <a href="/blog/${blog._id}">Read More</a>
+      `;
+      blogGrid.appendChild(card);
+    });
+  } catch (error) {
+    console.error("Error loading blogs:", error);
+    blogGrid.innerHTML = "<p>Error loading blogs. Please try again later.</p>";
+  }
+}
+
+// Load blogs on page load
+if (blogGrid) {
+  loadBlogs();
+}
 
 // Contact Form Submission
 const contactForm = document.getElementById("contact-form");

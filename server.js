@@ -45,6 +45,16 @@ const testimonialSchema = new mongoose.Schema({
 
 const Testimonial = mongoose.model("Testimonial", testimonialSchema);
 
+// Blog Schema
+const blogSchema = new mongoose.Schema({
+  title: { type: String, required: true },
+  excerpt: { type: String, required: true },
+  content: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now },
+});
+
+const Blog = mongoose.model("Blog", blogSchema);
+
 // Nodemailer Transporter
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -118,11 +128,98 @@ app.get("/api/testimonials", async (req, res) => {
   }
 });
 
-// Serve index.html
-app.get("/", (req, res) => {
+// Get All Blogs Endpoint
+app.get("/api/blogs", async (req, res) => {
+  try {
+    const blogs = await Blog.find().sort({ createdAt: -1 });
+    res.status(200).json(blogs);
+  } catch (error) {
+    console.error("Error fetching blogs:", error);
+    res.status(500).json({ error: "Failed to fetch blogs" });
+  }
+});
+
+// Get Single Blog Endpoint
+app.get("/api/blogs/:id", async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) {
+      return res.status(404).json({ error: "Blog not found" });
+    }
+    res.status(200).json(blog);
+  } catch (error) {
+    console.error("Error fetching blog:", error);
+    res.status(500).json({ error: "Failed to fetch blog" });
+  }
+});
+
+// Dynamic Blog Post Route
+app.get("/blog/:id", async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) {
+      return res.status(404).send("Blog not found");
+    }
+    res.send(`
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="${blog.excerpt}" />
+        <title>${blog.title} | Cynthia Kiprop</title>
+        <link rel="stylesheet" href="/styles.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+      </head>
+      <body>
+        <nav class="navbar">
+          <div class="logo">
+            <span class="logo-text">CynthiaKiprop</span>
+            <span class="logo-accent"></span>
+          </div>
+          <ul class="nav-links">
+            <li><a href="/#home" class="nav-link">Home</a></li>
+            <li><a href="/#about" class="nav-link">About</a></li>
+            <li><a href="/#portfolio" class="nav-link">Portfolio</a></li>
+            <li><a href="/#blog" class="nav-link active">Blog</a></li>
+            <li><a href="/#testimonials" class="nav-link">Testimonials</a></li>
+            <li><a href="/#contact" class="nav-link">Contact</a></li>
+          </ul>
+          <button class="theme-toggle" role="switch" aria-checked="false" aria-label="Toggle between dark and light mode">
+            <span class="toggle-icon">
+              <i class="fas fa-moon"></i>
+              <i class="fas fa-sun"></i>
+            </span>
+          </button>
+          <i class="fas fa-bars hamburger"></i>
+        </nav>
+        <section class="blog-content">
+          <h1>${blog.title}</h1>
+          <p>${blog.content.replace(/\n/g, "<br>")}</p>
+          <a href="/#blog" class="btn">Back to Blog</a>
+        </section>
+        <footer>
+          <div class="footer-bottom">
+            <p>© 2025 <span class="highlight">Cynthia Kiprop</span>. All rights reserved.</p>
+          </div>
+        </footer>
+        <script src="/script.js"></script>
+      </body>
+      </html>
+    `);
+  } catch (error) {
+    console.error("Error rendering blog:", error);
+    res.status(500).send("Server error");
+  }
+});
+
+// Catch-All Route for Main Portfolio
+app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
+// Start Server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
